@@ -169,7 +169,7 @@ def process_document(text: str) -> tuple:
     return final_text, stats
 
 # Professional Theme System
-def apply_professional_theme():
+def apply_theme():
     """ """
     
     theme_css = """
@@ -227,7 +227,7 @@ def apply_professional_theme():
         box-shadow: 0 0 20px rgba(0, 212, 255, 0.3) !important;
     }
     
-    /* Professional Buttons */
+    /* Buttons */
     .stButton > button {
         background: linear-gradient(135deg, #00d4ff, #a855f7) !important;
         color: white !important;
@@ -269,8 +269,7 @@ def apply_professional_theme():
     
     st.markdown(theme_css, unsafe_allow_html=True)
 
-# Apply professional theme
-apply_professional_theme()
+apply_theme()
 
 # Main Header
 st.markdown("""
@@ -280,7 +279,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Professional Layout
+# Layout
 col1, col2 = st.columns([1, 1], gap="large")
 
 with col1:
@@ -292,7 +291,7 @@ with col1:
         placeholder="Enter your text here for AI-powered paraphrasing...",
         key="neural_input"
     )
-    # Real-time document analytics
+    # Real-time text analytics
     if input_text:
         words = len(input_text.split())
         chars = len(input_text)
@@ -304,40 +303,24 @@ with col1:
         </div>
         """, unsafe_allow_html=True)
     
-    # Processing Button under the text area
     if st.button("Paraphrase", use_container_width=False, type="primary"):
         if input_text.strip():
             if not nltk_ready or tokenizer is None:
                 st.error("Please refresh the page.")
             else:
                 try:
-                    # Process document with professional analytics
                     processed_text, stats = process_document(input_text)
                     
                     # Store results in session state
                     st.session_state.processed_result = processed_text
                     st.session_state.processing_stats = stats
                     
-                    # Success notification
                     st.success("Paraphrasing completed successfully!")
                     
                 except Exception as e:
                     st.error(f"Paraphrasing failed: {str(e)}")
         else:
             st.warning("Please provide input text for Paraphrasing.")
-    
-    # # Real-time document analytics
-    # if input_text:
-    #     words = len(input_text.split())
-    #     chars = len(input_text)
-    #     sentences = len(sent_tokenize(input_text))
-        
-    #     st.markdown(f"""
-    #     <div class="neural-stats">
-    #         <h4>Document Analytics</h4>
-    #         <p><strong>Words:</strong> {words} | <strong>Characters:</strong> {chars} | <strong>Sentences:</strong> {sentences}</p>
-    #     </div>
-    #     """, unsafe_allow_html=True)
 
 with col2:
     st.markdown("### Paraphrased Text")
@@ -352,7 +335,7 @@ with col2:
             key="neural_output"
         )
         
-        # Professional Statistics Display
+        # Statistics
         if st.session_state.processing_stats:
             stats = st.session_state.processing_stats
             st.markdown(f"""
@@ -360,11 +343,6 @@ with col2:
                 <p><strong>Text Transformation:</strong> {stats.get('input_words', 0)} → {stats.get('output_words', 0)} words</p>
             </div>
             """, unsafe_allow_html=True)
-        
-        # # Export Options
-        # if st.button("📋 Copy Neural Output", use_container_width=True):
-        #     st.code(st.session_state.processed_result, language=None)
-        #     st.info("💾 Output displayed above - select and copy as needed.")
     
     else:
         st.text_area(
@@ -375,7 +353,7 @@ with col2:
             key="neural_placeholder"
         )
 
-# Professional Footer
+# Footer
 st.markdown("---")
 st.markdown("""
 <div style="text-align: center; opacity: 0.7; padding: 1.5rem;">
