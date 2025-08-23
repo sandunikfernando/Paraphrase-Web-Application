@@ -170,9 +170,8 @@ def process_document(text: str) -> tuple:
 
 # Professional Theme System
 def apply_professional_theme():
-    """Apply professional AI engineering theme with glassmorphism effects."""
+    """ """
     
-    # Dark Professional Theme Only
     theme_css = """
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -182,7 +181,7 @@ def apply_professional_theme():
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
     
-    /* Professional Header */
+    /* Header */
     .neural-header {
         background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
         backdrop-filter: blur(20px);
