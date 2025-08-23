@@ -384,7 +384,6 @@ with col2:
 st.markdown("---")
 st.markdown("""
 <div style="text-align: center; opacity: 0.7; padding: 1.5rem;">
-    <p><strong>NeuralText Pro</strong> | Powered by Transformer Architecture</p>
-    <p><small>Built with PyTorch • Hugging Face Transformers • Advanced Natural Language Processing</small></p>
+    <p><small><strong>NeuralText Pro</strong> | Powered by Transformer Architecture</small></p>
 </div>
 """, unsafe_allow_html=True)
