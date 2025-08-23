@@ -170,7 +170,9 @@ def process_document(text: str) -> tuple:
 
 # Professional Theme System
 def apply_professional_theme():
-        
+    """Apply professional AI engineering theme with glassmorphism effects."""
+    
+    # Dark Professional Theme Only
     theme_css = """
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -180,7 +182,7 @@ def apply_professional_theme():
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
     
-    /* Header */
+    /* Professional Header */
     .neural-header {
         background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
         backdrop-filter: blur(20px);
@@ -226,7 +228,7 @@ def apply_professional_theme():
         box-shadow: 0 0 20px rgba(0, 212, 255, 0.3) !important;
     }
     
-    /* Buttons */
+    /* Professional Buttons */
     .stButton > button {
         background: linear-gradient(135deg, #00d4ff, #a855f7) !important;
         color: white !important;
@@ -324,6 +326,19 @@ with col1:
                     st.error(f"Paraphrasing failed: {str(e)}")
         else:
             st.warning("Please provide input text for Paraphrasing.")
+    
+    # # Real-time document analytics
+    # if input_text:
+    #     words = len(input_text.split())
+    #     chars = len(input_text)
+    #     sentences = len(sent_tokenize(input_text))
+        
+    #     st.markdown(f"""
+    #     <div class="neural-stats">
+    #         <h4>Document Analytics</h4>
+    #         <p><strong>Words:</strong> {words} | <strong>Characters:</strong> {chars} | <strong>Sentences:</strong> {sentences}</p>
+    #     </div>
+    #     """, unsafe_allow_html=True)
 
 with col2:
     st.markdown("### Paraphrased Text")
@@ -338,7 +353,7 @@ with col2:
             key="neural_output"
         )
         
-        # Statistics
+        # Professional Statistics Display
         if st.session_state.processing_stats:
             stats = st.session_state.processing_stats
             st.markdown(f"""
@@ -346,6 +361,11 @@ with col2:
                 <p><strong>Text Transformation:</strong> {stats.get('input_words', 0)} → {stats.get('output_words', 0)} words</p>
             </div>
             """, unsafe_allow_html=True)
+        
+        # # Export Options
+        # if st.button("📋 Copy Neural Output", use_container_width=True):
+        #     st.code(st.session_state.processed_result, language=None)
+        #     st.info("💾 Output displayed above - select and copy as needed.")
     
     else:
         st.text_area(
