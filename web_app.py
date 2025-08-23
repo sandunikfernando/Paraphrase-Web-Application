@@ -4,6 +4,19 @@ from nltk.tokenize import sent_tokenize
 import streamlit as st
 import time
 
+import nltk
+import os
+
+# set a writable NLTK data directory (important for Streamlit Cloud)
+nltk_data_dir = "/tmp/nltk_data"
+os.makedirs(nltk_data_dir, exist_ok=True)
+nltk.data.path.append(nltk_data_dir)
+
+# download required tokenizer
+nltk.download("punkt_tab", download_dir=nltk_data_dir)
+nltk.download("punkt", download_dir=nltk_data_dir)
+
+
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
