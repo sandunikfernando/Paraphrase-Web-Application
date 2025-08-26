@@ -283,7 +283,7 @@ st.markdown("""
 col1, col2 = st.columns([1, 1], gap="large")
 
 with col1:
-    st.markdown("### Orginal Text")
+    st.markdown("### Original Text")
     
     input_text = st.text_area(
         "",
